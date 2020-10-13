@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="/css/store.css" rel="stylesheet" />
+    <title>Profile</title>
+</head>
+<body class="page-top">
+ 
+  
+   <%- include("partials/navbar.ejs") %> 
+    <!-- Masthead-->
+    <section id="mast">
+        <header class="masthead">
+            <div class="container">
+             
+                <div style="margin-bottom:2.5rem ;" class="masthead-heading text-uppercase">PROFILE</div>
+                <i class="fas fa-lg fa-sort-down"></i>
+      
+            </div>
+        </header>
+
+    </section>
+    <section>
+        <div class="row">
+<div class=" col-lg-3" style="margin-top: 0%;">
+    <div class="card cent" style="width: 18rem;">
+        <img class="card-img-top"   style=" background-color: #fed136;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZNICp8mwhEWT1e0IHbDoqdd0y2EI8RdOwQw&usqp=CAU" alt="Card image cap">
+        <div class="card-body">
+            <% console.log(user) %> 
+          <h5 class="card-title"><%= user.firstname %> <%= user.lastname %>  </h5>
+          <p class="card-text"><%= user.username %> </p>
+          <p class="card-text">+91<%= user.phoneNumber %> </p>
+        </div>
+    
+        <div class="card-body cent">
+           
+                <a style="font-size: 1.5rem;"
+                  role="button"
+                  class="navBut btn btn-lg btn-warning"
+                  href="/logout"
+                  >LOG OUT
+                </a>
+             
+         
+        </div>
+      </div>
+</div>
+<div class="col-lg-8">
+
+    <div class="card" style="width: 100%;">
+        <div class="card-body" style="text-align: left;">
+            <table>
+                <tr>
+                    <td>
+
+                        <h5 class="card-title">Business</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Name</h6>
+                      
+                        <p class="card-text" style="font-size: 2rem;line-height: 1; letter-spacing: 0.0068em; font-family: 'Montserrat';"><%= user.bname %>, </p>
+                        <p class="card-text" style="font-size: 2rem; line-height: 1;letter-spacing: 0.0068em; font-family: 'Montserrat';"><%= user.business %>, </p>
+            
+                        
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+
+                        <h5 class="card-title">Address</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Business Address</h6>
+                      
+                        <p class="card-text" style="font-size: 2rem;line-height: 1; letter-spacing: 0.0068em; font-family: 'Montserrat';"><%= user.addr %>, </p>
+                        <p class="card-text" style="font-size: 2rem; line-height: 1;letter-spacing: 0.0068em; font-family: 'Montserrat';"><%= user.zip %>, </p>
+                        <p class="card-text" style="font-size: 2rem;line-height: 1; letter-spacing: 0.0068em; font-family: 'Montserrat';"><%= user.city %>, </p>
+                        
+                    </td>
+                 
+                </tr>
+              
+          
+              
+            </table>
+          
+        </div>
+      </div>
+</div>
+
+        </div>
+     
+    </section>
+   
+  
+
+ 
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Contact form JS-->
+
+<script src="mail/v.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+
+<%- include("partials/footer") %> 
+    
+</body>
+</html>

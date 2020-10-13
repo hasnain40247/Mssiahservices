@@ -1,0 +1,24 @@
+
+
+body{
+    background-color: #212529;
+    font-family: 'Montserrat';
+}
+h1{
+    font-size: 3rem;
+}
+label{
+    font-family: 'Montserrat';
+}
+
+
+.alert-success{
+    background-color: #212529;
+    color: #fed136;
+    border-radius: 2rem !important;
+    width: 40%;
+}
+
+.rounded-lg {
+    border-radius: 2.3rem !important;
+}

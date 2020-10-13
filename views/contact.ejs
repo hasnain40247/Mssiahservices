@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+        href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        rel="stylesheet"
+        id="bootstrap-css"
+      />
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+      <!-- Google fonts-->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+      <!-- Core theme CSS (includes Bootstrap)-->
+      <link href="css/store.css" rel="stylesheet" />
+       
+
+        
+        <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
+        
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+        <title>Contact Us</title>
+
+    <title>Contact us</title>
+    </head>
+    <body id="page-top">
+    <%- include("partials/navbar") %> 
+        <section class="page-section" style="
+            background-color: #212529;
+            background-position: center center;
+            background-size: cover;
+            background-image: url('../images/123.jpg');
+            background-blend-mode: soft-light;
+            background-repeat: no-repeat;
+            background-position: center;
+          " id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="section-heading text-uppercase">Contact Us</h1>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+
+
+                <form id="contactForm" action="/yourmessage" method="POST" >
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control name" name="name" id="name" type="text" placeholder="Your Name *" required="required"  />
+                             
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control email" id="email" name="email" type="email" placeholder="Your Email *" required="required" />
+                             
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <input class="form-control phone" id="phone" name="phone" type="tel" placeholder="Your Phone *" required="required" />
+                          
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <textarea  class="form-control message" id="message" name="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                       <% if(mes){ %>
+                        <h6 id="hideMe" style="margin-left: auto; margin-right: auto;" >Message Was Sent!</h6>
+                       <% } %>  
+                        <button style="font-family: 'Montserrat'; letter-spacing: 0.7; margin-top: 2%;" class="btn btn-primary btn-lg text-uppercase submit" id="sendMessageButton" type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <header class="masthead" style="padding-top: 3rem; margin-bottom: 2rem !important;">
+            <div class="about" style="padding: 3.5% 3% 1% 3%; color:#212529">OUR STORES</div>
+           
+              <div  class="overlay" onclick="style.pointerEvents='none'"></div>
+                <iframe width="80%" height="500" frameborder="0" src="https://www.google.com/maps/d/embed?mid=11lgBUbKZVEj7zsshukgFJsft3uKrgaGh&z=12" ></iframe>
+
+           
+        </header>
+        <%- include("partials/newsletter") %> 
+      
+    
+<%- include("partials/footer") %> 
+    
+
+        
+ 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+ 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="js/scripts.js"></script>
+
+   
+        <script>
+            $(document).ready(function(){
+              $("#contactForm").validate({
+                errorClass:"error",
+                // Specify validation rules
+                rules: {
+                  name: "required",
+                
+               email: {
+                    required: true,
+                    email: true
+                  },
+              
+             
+                  phone: {
+                   
+                    required: true,
+                    maxlength:10,
+                    minlength:10
+                  
+                  },
+
+                  message:{
+                      required:true
+                  }
+                },
+      
+             
+                  messages: {
+                                  name: {
+                                      required: "Name required!",
+                                      
+                                  },
+
+                             
+                                  email: {
+                                      required: "Email required!"
+                                  },
+                              
+             
+            
+                  phone: {
+                    required: "Phone required!",
+                                     
+                                      maxlength: "Phone number too long! ",
+                                      minlength:"Phone number too short!"
+                  },
+                  message:{
+                      required:"Message required"
+                  }
+                                
+                              },
+      
+              
+              });
+              $.validator.addMethod("pwcheck", function(value) {
+         return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+             && /[A-Z]/.test(value) // has a lowercase letter
+             && /\d/.test(value) // has a digit
+      });
+      
+      
+            });
+            </script>
+    </body>
+</html>

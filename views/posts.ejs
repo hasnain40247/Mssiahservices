@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/store.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
+    <title>Community</title>
+</head>
+<body class="page-top">
+ 
+  <%- include("partials/navbar") %> 
+  
+    <section id="postMast" class="homeMast" style="height: 550px;">
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Welcome To Our Studio!</div>
+                <div class="masthead-heading text-uppercase">OUR COMMUNITY</div>
+
+               <!-- <a href="#pages"><i style="margin-top: 4.5rem;" class="pos fas fa-sort-down"></i></a>
+              <a href="#pages"> <hr class="full"  style="margin-top: 15px; color: blue; font-size: 3rem;"></a> -->
+               
+      
+            </div>
+          
+        </header>
+       
+    </section>
+    <section style="background-color: whitesmoke;">
+        
+        <% for(var i=0;i< posts.length;i++){ %> 
+            
+            <div class="card mb-3" style="max-width: 50%; margin-right: auto; margin-left: auto;">
+                <div class="row no-gutters">
+                  <div  style="padding: 2.4%; text-align: center; margin-top: auto; margin-bottom: auto; " class="col-md-4">
+                    <i  style="color: #fed136;" class="fas fa-5x fa-user-circle"></i>
+                    <h4 style="margin-top: 1.456%; color: #212529;"><%=posts[i].name%></h4>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Post #<%= i+1 %> </h5>
+                      <p class="textis card-text"> <%= posts[i].message %> </p>
+                      <a data-toggle="modal" data-target=#mymodal<%= posts[i]._id%> href="#">Read More...</a>
+                    
+    
+                    
+                      <div id=mymodal<%= posts[i]._id %> class="modal fade" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered " id=<%= posts[i]._id %>>
+                            <div  style="border-radius: 1.4rem;" class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title"><%= posts[i].name %> </h5>    <em><h5 class="text-muted modal-title">(Post #<%= i+1 %>)</h5></em>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                              <%= posts[i].message %> 
+                                  
+                             
+                              </div>
+                              <div  style="padding: 0.98%;" class="modal-footer">
+                                  <div style="margin-left: auto; margin-right: auto;">
+                                    <p class="card-text"><small class="text-muted">Posted <%= posts[i].date %> </small></p>
+                                  </div>
+                    
+                              </div>
+                          
+                          </div>
+                          </div>
+                      </div>
+                      <p class="card-text"><small class="text-muted">Posted <%= posts[i].date %> </small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <% } %> 
+  
+    </section>
+   
+    <section id="pages" style="margin-right: auto; margin-left: auto;" class="page-section" >
+
+        <div class="container">
+            <form  action="/posts" method="POST">
+                <div class="row" >
+
+                    <div style="padding: 3% 0 3% 9%;" class="col-lg-2" id="col">
+                        <i style="margin-right: 5.5%;" class="fas fa-5x fa-user-circle"></i>
+                    </div>
+                  
+            <div  class="col-lg-10">
+                <textarea rows="9" cols="50" style="width: 84%;" class="form-control message" id="message" name="message" placeholder="Your Content *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                        
+                   
+                <button  style="margin-top: 2%; width: 84% !important; display: inline-block; font-family: 'Montserrat'; letter-spacing: 0.7; " class="btn btn-lg btn-warning" >Submit</button>
+            </div>
+                </div>
+             
+
+            </form>
+        </div>
+        </section>
+  
+
+
+
+
+  <%- include("partials/newsletter.ejs") %> 
+
+  
+
+
+
+
+  
+  
+ 
+    
+
+
+     
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+
+
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<%- include("partials/footer") %> 
+
+
+    
+</body>
+</html>

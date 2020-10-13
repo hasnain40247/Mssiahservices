@@ -1,0 +1,160 @@
+<script>
+
+$('.dropdown').on('show.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+  });
+
+  // Add slideUp animation to Bootstrap dropdown when collapsing.
+  $('.dropdown').on('hide.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+  });
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/"
+      ><h1>MSSIAH COFFEE</h1></a
+    >
+    <img class="pad" src="/images/1.svg" />
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Menu
+      <i class="fas fa-bars ml-1"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        <li class="nav-item">
+          <div class="dropdown">
+            <a
+              class="nav-link js-scroll-trigger dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+            >
+              Services
+              <span class="caret"></span>
+            </a>
+            <ul
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="dropdownMenu1"
+            >
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link js-scroll-trigger"
+                  role="menuitem"
+                  tabindex="-1"
+                  href="/equipments"
+                  >Equipment</a
+                >
+              </li>
+
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link js-scroll-trigger"
+                  role="menuitem"
+                  tabindex="-1"
+                  href="/break"
+                  >Break Room</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link js-scroll-trigger"
+                  role="menuitem"
+                  tabindex="-1"
+                  href="/beans"
+                  >Beans</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/business">Business Size</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/posts">Community</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="/Cart"
+            ><i class="fas fa-shopping-cart"></i>
+            <span class="badge badge-pill badge-warning"
+              >
+              <% if(itemCount){ %> 
+              <%=itemCount%>
+              <% } else{ %> 
+0
+              <% } %> 
+              
+              </span
+            >
+          </a>
+        </li>
+
+        <% if(login){ %>
+
+        <li class="nav-item">
+          <div class="dropdown">
+            <a
+              class="nav-link js-scroll-trigger dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+            >
+              <i class="fas fa-user"></i>
+              <span class="caret"></span>
+            </a>
+            <ul
+            style="text-align: center; padding: 0.5rem;"
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="dropdownMenu1"
+            >
+              <li class="nav-item" role="presentation">
+                <a class="nav-link js-scroll-trigger" href="/user/profile"
+                  >Profile</a
+                >
+              </li>
+              <li class="nav-item" role="menuitem">
+                <a   tabindex="-1" class="nav-link js-scroll-trigger" href="/user/orders"
+                  >Orders</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  role="menuitem"
+                  tabindex="-1"
+                  style="width: 100%;"
+                  class="navBut btn btn-sm btn-outline-warning"
+                  href="/logout"
+                  >LOG OUT
+                </a>
+              </li>
+            
+            </ul>
+          </div>
+        </li>
+
+        <% }else{ %>
+        <li class="nav-item">
+          <a
+            role="button"
+            class="navBut btn btn-sm btn-outline-warning"
+            href="/login"
+            >LOGIN
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

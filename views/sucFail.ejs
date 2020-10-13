@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/store.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
+    <title>Document</title>
+    <style>
+        .f{
+            margin-left: auto;
+            margin-right: auto;
+         
+  position: relative;
+  margin-top: 2.6rem;
+  /* margin-bottom: 1rem; */
+  border: 0;
+  border-top: 7px solid #fed136;
+ 
+  text-align: center;
+        }
+    </style>
+</head>
+<body class="page-top">
+ 
+  
+  <%- include("partials/navbar") %> 
+  
+    <section id="mast" class="homeMast" style="height: 100%;">
+        <header class="masthead">
+            <div class="container">
+                <% if(success){ %> 
+                <div class="masthead-subheading">Welcome To The Family!</div>
+                <div class="masthead-heading text-uppercase">YOU HAVE SUCCESSFULLY SUBSCRIBED!</div>
+                <% }else{ %>
+               
+                    <div class="masthead-heading text-uppercase">ERROR SUBSCRIBING, PLEASE RETRY</div>
+                <% } %> 
+
+            
+              <a href="#pages"> <hr class="f"  width="60%" style="color: blue; font-size: 3rem;"></a>
+               
+      
+            </div>
+          
+        </header>
+       
+    </section>
+
+        <!-- Features -->
+
+     
+   
+  
+
+
+
+    
+
+
+     
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Contact form JS-->
+
+
+<script src="js/scripts.js"></script>
+
+    
+</body>
+</html>

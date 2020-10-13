@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="/css/store.css" rel="stylesheet" />
+    <link href="/css/credit.css" rel="stylesheet" />
+    <style media="screen">
+
+.focus{
+  color: #495057;
+  background-color: #fff;
+  border-color: #ffeeb5;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(254, 209, 54, 0.25);
+}
+.error{
+  color: #495057;
+  background-color: #fff;
+  border-color: red;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(240, 38, 38, 0.25);
+}
+
+    </style>
+    <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
+    <title>Checkout</title>
+  </head>
+  <body>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <div class="container py-5">
+      <!-- For demo purpose -->
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <a class="navbar-brand js-scroll-trigger" href="/">
+            <h1>MESSIAH COFFEE</h1>
+          </a>
+          <p style="color: white" class="lead mb-0">Join Us!</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <ul
+              role="tablist"
+              class="nav bg-light nav-pills rounded-pill nav-fill mb-3"
+            >
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-card"
+                  class="nav-link active rounded-pill"
+                >
+                  <i class="fa fa-credit-card"></i>
+                  Credit Card
+                </a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="nav-tab-card" class="tab-pane fade show active">
+                <h6 class="alert alert-success">Price: 
+                
+                  <%var a=price; %>
+                  <% var b=45;%>
+                  <% var sum=a+b;%>
+                  <% console.log(sum);%>
+
+                
+                   
+                  ₹<%=sum%>.00</h6>
+        
+                <form action="/charge" method="post" id="payment-form">
+                  <div class="form-group">
+                    <label for="cardname">NAME ON CARD</label>
+                    <input
+                      type="text"
+                      name="cardname"
+                      id="card-name"
+                      placeholder="Jason Doe"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="card-phone">PHONE</label>
+                    <input
+                      type="number"
+                      name="card-phone"
+                      id="card-phone"
+                      placeholder="Phone"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="cardaddress">ADDRESS</label>
+                    <input
+                      type="text"
+                      name="cardaddress"
+                      id="card-address"
+                      placeholder="123 st."
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="card-number"> CARD </label>
+                    <div id="card-number" class="form-control">
+                      <!-- A Stripe Element will be inserted here. -->
+                    </div>
+
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label for="card-exp"> EXP </label>
+                        <div id="card-exp">
+                          <!-- A Stripe Element will be inserted here. -->
+                        </div>
+
+                        <!-- Used to display form errors. -->
+                        <div id="exp-errors" role="alert"></div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group mb-4">
+                        <label for="card-cvv"> CVV </label>
+                        <div id="card-cvv">
+                          <!-- A Stripe Element will be inserted here. -->
+                        </div>
+
+                        <!-- Used to display form errors. -->
+                        <div id="cvv-errors" role="alert"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"
+                  >
+                    Confirm
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+    <script type="text/javascript">
+      var stripe = Stripe(
+        "pk_test_51HYEiXKpObt632yVDSvTRGDFgHnF8bswKc7xjs6ei4bDtWpT65WLBRdtjiHPTZpoKqtnrpEjAR60uzCOp6YVCVmA00zHo8JBMH"
+      );
+      var elements = stripe.elements();
+
+      var style = {
+        base: {
+          color: "#32325d",
+          fontFamily: '"Montserrat", Helvetica, sans-serif',
+          fontSmoothing: "antialiased",
+          border: '2px solid red',
+          fontSize: "16px",
+          "::placeholder": {
+            color: "#aab7c4",
+          },
+        },
+        invalid: {
+          
+          color: "#fa755a",
+          iconColor: "#fa755a",
+          
+        },
+      };
+
+      
+      var card = elements.create("cardNumber", {
+        classes: {
+          base: "form-control",
+          focus: "focus",
+        
+          invalid: "error",
+          
+        
+        },
+      });
+      var exp = elements.create("cardExpiry", {
+        classes: {
+          base: "form-control",
+          invalid: "error",
+        },
+      });
+      var cvv = elements.create("cardCvc", {
+        classes: {
+          base: "form-control",
+          invalid: "error",
+        },
+      });
+
+   
+      card.mount("#card-number");
+      exp.mount("#card-exp");
+      cvv.mount("#card-cvv");
+
+    // Handle real-time validation errors from the card Element.
+      card.on("change", function (event) {
+        var displayError = document.getElementById("card-errors");
+        if (event.error) {
+          displayError.textContent = event.error.message;
+        } else {
+          displayError.textContent = "";
+        }
+      });
+      exp.on("change", function (event) {
+        var displayError = document.getElementById("exp-errors");
+        if (event.error) {
+          displayError.textContent = event.error.message;
+        } else {
+          displayError.textContent = "";
+        }
+      });
+      cvv.on("change", function (event) {
+        var displayError = document.getElementById("cvv-errors");
+        if (event.error) {
+          displayError.textContent = event.error.message;
+        } else {
+          displayError.textContent = "";
+        }
+      });
+
+      var form = document.getElementById("payment-form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function (result) {
+          if (result.error) {
+     
+            var errorElement = document.getElementById("card-errors");
+            errorElement.textContent = result.error.message;
+          } else {
+          
+            stripeTokenHandler(result.token);
+          }
+        });
+      });
+
+   
+      function stripeTokenHandler(token) {
+        // Insert the token ID into the form so it gets submitted to the server
+        var form = document.getElementById("payment-form");
+        var hiddenInput = document.createElement("input");
+        hiddenInput.setAttribute("type", "hidden");
+        hiddenInput.setAttribute("name", "stripeToken");
+        hiddenInput.setAttribute("value", token.id);
+        form.appendChild(hiddenInput);
+
+      
+        form.submit();
+      }
+    </script>
+  
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

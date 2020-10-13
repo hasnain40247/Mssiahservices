@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="/css/store.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body class="page-top">
+ 
+  
+   <%- include("partials/navbar.ejs") %> 
+    <!-- Masthead-->
+    <section id="mast">
+        <header class="masthead">
+            <div class="container">
+             
+                <div style="margin-bottom:2.5rem ;" class="masthead-heading text-uppercase">Orders</div>
+                <i class="fas fa-lg fa-sort-down"></i>
+      
+            </div>
+        </header>
+
+    </section>
+   
+  
+
+   
+    <section class="page-section" style="padding: 2rem;" >
+
+      <%    if(orders){ %>
+        <%console.log(orders);%>
+       
+
+        <div class="px-4 px-lg-0">
+      
+    
+           
+          
+            <div class="pb-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+          
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" style="font-family: 'Montserrat';letter-spacing: 0.0625em" class="border-0 bg-light">
+                              <div class="p-2 px-3 text-uppercase">Product</div>
+                            </th>
+                            <th scope="col" style="font-family: 'Montserrat';letter-spacing: 0.0625em" class="border-0 bg-light">
+
+                              <div class="py-2 text-uppercase">Price</div>
+                            </th>
+                            <th scope="col" style="font-family: 'Montserrat';letter-spacing: 0.0625em" class="border-0 bg-light">
+
+                              <div class="py-2 text-uppercase">Quantity</div>
+                            </th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                  
+
+<% orders.forEach(element => { %>
+ 
+
+    <% element.items.forEach(element=>{ %>
+
+<tr>
+    <th scope="row" class="border-0">
+      <div class="p-2">
+        <img src=<%= element.item.image %>  alt="" width="70" class="img-fluid rounded shadow-sm">
+        <div class="ml-3 d-inline-block align-middle">
+          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle"><%= element.item.title %></a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
+        </div>
+      </div>
+    </th>
+    <td class="border-0 align-middle"><strong>₹<%= element.item.price %></strong></td>
+    <td class="border-0 align-middle"><strong><%= element.qty%></strong></td>
+
+  </tr>
+  <%  }) %>
+  
+
+                        
+<% }); %> 
+
+
+                    
+                        
+                         
+                        </tbody>
+                      </table>
+                    </div>
+                   
+                  </div>
+                </div>
+          
+          
+          
+              </div>
+            </div>
+          </div>
+
+
+          <% } %> 
+
+
+
+        
+    </section>
+ 
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<!-- Contact form JS-->
+
+<script src="mail/v.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+
+<%- include("partials/footer") %> 
+    
+</body>
+</html>
