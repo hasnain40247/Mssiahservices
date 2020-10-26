@@ -1,55 +1,86 @@
-body,html {
-background-color: #212529;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+body,
+html {
+  background-color: #212529;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   max-width: 100%;
   overflow-x: hidden;
- 
-
-   
 }
 
+#hideMe {
+  text-align: center;
+  color: #fff;
+  letter-spacing: 1.7;
+
+  border-radius: 2rem;
+  width: 70%;
+  padding: 1%;
+  background-color: #b94d4d;
+
+  -moz-animation: cssAnimation 0s ease-in 4s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0s ease-in 4s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 0s ease-in 4s forwards;
+  /* Opera */
+  animation: cssAnimation 0s ease-in 4s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+  to {
+    padding: 0%;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+    padding: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
 
 .error {
   padding: 1.3%;
-  color: #F00;
- 
+  color: #f00;
 }
 
-.login-main-text{
-
+.login-main-text {
   position: fixed;
   top: 0;
   left: 0;
-   width: 30% ;
-  
-   color: #eeeeee;
+  width: 30%;
+
+  color: #eeeeee;
   font-weight: bold;
 
-
- 
   z-index: 2;
-  
+
   text-align: left;
 }
 
-.main{
-  margin-left: 30%; 
+.main {
+  margin-left: 30%;
   padding: 50px;
- 
 }
-.pad{
+.pad {
   height: 50px;
   width: 50px;
   margin-bottom: 13px;
 }
 
-.col-sm-6{
+.col-sm-6 {
   margin-left: 35%;
   padding: 10px;
   overflow: hidden !important;
 }
-.focus{
+.focus {
   color: #495057;
   background-color: #fff;
   border-color: #ffeeb5;
@@ -57,46 +88,41 @@ background-color: #212529;
   box-shadow: 0 0 0 0.2rem rgba(254, 209, 54, 0.25);
 }
 
-#inputAddress{
+#inputAddress {
   width: 85%;
 }
 
-.login-form{
-  
+.login-form {
   margin-top: 20%;
   margin-left: auto;
 }
-#lf{
+#lf {
   margin-top: 5%;
 }
-.form-group{
+.form-group {
   margin-top: 0.6rem;
 }
 
-.register-form{
+.register-form {
   margin-top: 20%;
 }
 
-.main-head{
-    height: 150px;
-    background: #FFF;
-   
+.main-head {
+  height: 150px;
+  background: #fff;
 }
-.sign{
-    
-    margin-bottom: 10%;
-  
+.sign {
+  margin-bottom: 10%;
+}
+.btn {
+  text-align: center;
 
-}
-.btn{
-    text-align: center;
-   
-    width: 120px;
+  width: 120px;
 }
 
-.form-control{
-    border-radius: 11px;
-    width: 70%;
+.form-control {
+  border-radius: 11px;
+  width: 70%;
 }
 
 .form-control:focus {
@@ -106,76 +132,84 @@ background-color: #212529;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(254, 209, 54, 0.25);
 }
-.form{
-    margin-top: 4rem;
+.form {
+  margin-top: 4rem;
 }
 
-.a{
+.a {
   text-decoration: none;
 }
 
-.a:hover{
+.a:hover {
   text-decoration: none;
 }
-h1, .h1 {
-  font-size: 2.0rem;
+h1,
+.h1 {
+  font-size: 2rem;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   margin-bottom: 0.5rem;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   line-height: 1.2;
 }
-label{
-  color: #FFF;
+label {
+  color: #fff;
 }
 
 .sidenav {
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   -webkit-filter: brightness(50%);
-  
-  
-  
- 
-height: 100%;
 
-   position: fixed;
-   top: 0;
-   left: 0;
-    width: 30% ;
-   
-    background-image: url("https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  height: 100%;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30%;
 
- 
-   
+  background-image: url("https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
 }
 
 .shimmer {
-  
-  
   font-size: 3.5rem;
- 
+
   font-weight: 700;
-  
 
   padding: 0 140px 0 0;
   display: inline;
-
 }
 .shimmer {
   text-align: center;
-  color: rgba(255,255,255,0.1);
-  background: -webkit-gradient(linear, left top, right top, from(#FFFF99), to(#FFFF99), color-stop(0.5, #fff));
- 
+  color: rgba(255, 255, 255, 0.1);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ffff99),
+    to(#ffff99),
+    color-stop(0.5, #fff)
+  );
+
   background-size: 125px 100%;
   -webkit-background-clip: text;
-  
 
   animation-name: shimmer;
 
@@ -227,38 +261,37 @@ height: 100%;
   border-color: #fed136;
 }
 
-
 .main {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
+  .sidenav {
+    padding-top: 15px;
+  }
 }
 
 @media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
-    }
+  .login-form {
+    margin-top: 10%;
+  }
 
-    .register-form{
-        margin-top: 10%;
-    }
+  .register-form {
+    margin-top: 10%;
+  }
 }
 
-
-
-.login-main-text{
-    margin-top: 2%;
-    padding: 60px;
-    color: #fff;
+.login-main-text {
+  margin-top: 2%;
+  padding: 60px;
+  color: #fff;
 }
 
-.login-main-text h2{
-    font-weight: 300;
+.login-main-text h2 {
+  font-weight: 300;
 }
 
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
 }

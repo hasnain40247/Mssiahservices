@@ -1,144 +1,143 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
-    <link
-      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
-    />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="font/flaticon.css">
-    
-    <link rel="stylesheet" href="sign-in.css" />
-    <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Login</title>
-  </head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="font/flaticon.css">
+
+  <link rel="stylesheet" href="sign-in.css" />
+  <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+  <title>Login</title>
+</head>
 
 
 
-  <body>
+<body>
 
-   
-<section>
 
-     <div class="row">
+  <section>
 
-        <div class="sidenav"></div>
-          <div class="login-main-text">
-            
+    <div class="row">
 
-              <h1 style="letter-spacing: 0.0625em; font-size: 3.4rem;">
-                Application<br />
-                Login
-              </h1>
-              <h5 style=" letter-spacing: 0.0625em;color: #fde136;">Login or register from here to access.</h5>
+      <div class="sidenav"></div>
+      <div class="login-main-text">
 
-    
-           
-          </div>
-        
-      
-        <div class="col-sm-6">
-       
-          <div class="login-form">
-             <strong><h1 class="sign shimmer">MSSIAH COFFEE  <img  class="pad" src="/images/1.svg" ></h1></h1></strong> 
-            <form action="/login" method="POST" id="loging">
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="username" class="form-control" placeholder="User Name" />
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input
-                name="password"
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                />
-              </div>
-              <button style="letter-spacing: 0.0625em" name="login" type="submit" class="btn btn-lg btn-outline-warning">LOGIN</button>
-              
-              <a  style="letter-spacing: 0.0625em" href="/register" role="button" class="btn btn-lg  btn-outline-warning"  >REGISTER</a>
-            </form>
-          </div>
 
-       
-      </div>
-      
+        <h1 style="letter-spacing: 0.0625em; font-size: 3.4rem;">
+          Application<br />
+          Login
+        </h1>
+        <h5 style=" letter-spacing: 0.0625em;color: #fde136;">Login or register from here to access.</h5>
+
+
+
       </div>
 
-</section>
 
-   
-    
+      <div class="col-sm-6">
+
+        <div class="login-form">
+          <strong>
+            <h1 class="sign shimmer">MSSIAH COFFEE <img class="pad" src="/images/1.svg"></h1>
+            </h1>
+          </strong>
+          <form action="/login" method="POST" id="loging">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="username" class="form-control" placeholder="User Name" />
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input name="password" type="password" class="form-control" placeholder="Password" />
+            </div>
+            <% if(inCheck){ %>
+            <h6 id="hideMe" style="margin-right: auto;">Incorrect Username Or Password</h6>
+            <% } %>
+            <button style="letter-spacing: 0.0625em; margin-left: 0; margin-top: 2.6%;" name="login" type="submit"
+              class="btn btn-lg btn-outline-warning">LOGIN</button>
+
+            <a style="letter-spacing: 0.0625em; margin-top: 2.6%;" href="/register" role="button"
+              class="btn btn-lg  btn-outline-warning">REGISTER</a>
+          </form>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
 
 
 
-      
-  
-    
 
 
 
-   
-<script>
-  
- 
- 
-  $(document).ready(function(){
-    $("#loging").validate({
-      errorClass:"error",
-      // Specify validation rules
-      rules: {
-   
-        username: {
-          required: true,
-          email: true
+
+
+
+
+
+
+
+  <script>
+
+
+
+    $(document).ready(function () {
+      $("#loging").validate({
+        errorClass: "error",
+        // Specify validation rules
+        rules: {
+
+          username: {
+            required: true,
+            email: true
+          },
+          password: {
+            required: true,
+
+          },
+
         },
-        password: {
-          required: true,
-         
-        },
-      
-      },
 
-   
+
         messages: {
-                      
-                        username: {
-                            required: "Email required!"
-                        },
-                        password: {
-                            required: "Password required!",
-                           
-                        },
-                     
-                      
-                    },
 
-    
+          username: {
+            required: "Email required!"
+          },
+          password: {
+            required: "Password required!",
+
+          },
+
+
+        },
+
+
+      });
+
+
+
     });
-
-
-
-  });
   </script>
 
-  </body>
-  
+</body>
 
-  
+
+
 </html>

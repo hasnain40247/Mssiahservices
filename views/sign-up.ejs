@@ -1,238 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
-    />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="font/flaticon.css" />
-    <link rel="stylesheet" href="sign-in.css" />
-    <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+  <link rel="stylesheet" href="font/flaticon.css" />
+  <link rel="stylesheet" href="sign-in.css" />
+  <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
 
-    <title>Register</title>
-  </head>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 
-  <body>
-    <section>
-      <div class="row">
-        <div class="sidenav"></div>
-          <div class="login-main-text">
-            <h1 style=" letter-spacing: 0.0625em; font-size: 3rem;">
-              Register<br />
-              Now!
-            </h1>
-            <h5 style="letter-spacing: 0.0625em; color: #fed136;">Register from here to access.</h5>
-          </div>
-        
+  <title>Register</title>
+</head>
+
+<body>
+  <section>
+    <div class="row">
+      <div class="sidenav"></div>
+      <div class="login-main-text">
+        <h1 style=" letter-spacing: 0.0625em; font-size: 3rem;">
+          Register<br />
+          Now!
+        </h1>
+        <h5 style="letter-spacing: 0.0625em; color: #fed136;">Register from here to access.</h5>
+      </div>
 
 
-        <div class="col-sm-6">
-          <div class="login-form" id="lf">
-            <strong
-              ><a class="a" href="/login"><h1 class="sign shimmer">
-                MSSIAH COFFEE <img  class="pad" src="/images/1.svg" ></h1
-                
-            ></a></strong>
-            <hr style="margin: 2px;">
 
-            <form action="/register" id="registration" method="POST" >
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label >First Name</label>
-                  <input type="text" class="form-control"  name="fname" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                  <label ">Last Name</label>
-                  <input type="text" class="form-control" name="lname" placeholder="Last Name">
-                </div>
-               
+      <div class="col-sm-6">
+        <div class="login-form" id="lf">
+          <strong><a class="a" href="/login">
+              <h1 class="sign shimmer">
+                MSSIAH COFFEE <img class="pad" src="/images/1.svg"></h1>
+            </a></strong>
+          <hr style="margin: 2px;">
+          <% if(isExist){ %>
+          <h6 id="hideMe" style="width:85%;margin-right: auto;">Email Already Exists</h6>
+          <% } %>
+
+          <form action="/register" id="registration" method="POST">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="fname" placeholder="First Name">
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control"  name="username" id="inputEmail4" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">Password</label>
-                  <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputAddress">Business Name</label>
-                <input type="text" class="form-control ad"  id="inputAddress" name="bname" placeholder="Business Name">
+              <div class="form-group col-md-6">
+                <label ">Last Name</label>
+                  <input type=" text" class="form-control" name="lname" placeholder="Last Name">
               </div>
 
-              <div class="form-row">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" name="username" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Business Name</label>
+              <input type="text" class="form-control ad" id="inputAddress" name="bname" placeholder="Business Name">
+            </div>
 
-                <div class="form-group col-md-6">
-                  <label for="inputC">Phone</label>
-                  <input  id="inputC" name="phone" placeholder="phone" class="form-control">
-                   
-              
-                </div>
-                 <div class="form-group col-md-6">
-                  <label for="inputBusiness">Business Size</label>
-                  <select id="inputBusiness" name="business" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>10-15</option>
-                  </select>
-                </div>
+            <div class="form-row">
+
+              <div class="form-group col-md-6">
+                <label for="inputC">Phone</label>
+                <input id="inputC" name="phone" placeholder="phone" class="form-control">
+
+
               </div>
-              
-               <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control ad" id="inputAddress" name="al1" placeholder="1234 Main St">
+              <div class="form-group col-md-6">
+                <label for="inputBusiness">Business Size</label>
+                <select id="inputBusiness" name="business" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>10-15</option>
+                </select>
               </div>
-              <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control ad" id="inputAddress" name="al2" placeholder="Apartment, studio, or floor">
-              </div> 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputCity">City</label>
-                  <input type="text"  placeholder="Delhi" name="city" class="form-control" id="inputCity">
-                </div>
-              
-                <div class="form-group col-md-6">
-                  <label for="inputZip">Zip</label>
-                  <input type="number" class="form-control" name="zip" placeholder="Zip" id="inputZip">
-                </div>
-              </div> 
-               
-             
-              <button type="submit" class="btn btn-lg btn-outline-warning">Register</button>
-            </form>
-          </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control ad" id="inputAddress" name="al1" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control ad" id="inputAddress" name="al2"
+                placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" placeholder="Delhi" name="city" class="form-control" id="inputCity">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputZip">Zip</label>
+                <input type="number" class="form-control" name="zip" placeholder="Zip" id="inputZip">
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-lg btn-outline-warning">Register</button>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
 
 
-    <script>
-      $(document).ready(function(){
-        $("#registration").validate({
-          errorClass:"error",
-          // Specify validation rules
-          rules: {
-            fname: "required",
-            lname: "required",
-            username: {
-              required: true,
-              email: true
-            },
-            password: {
-              required: true,
-              pwcheck:true,
-              minlength: 10
-            },
-            city: {
-              required: true,
-             
-            
-            },
-            zip: {
-              pcheck:true,
-              maxlenght:6,
-              required: true,
-              
-            },
-            business: {
-              required: true,
-            
-            },
-            bname: {
-              required: true,
-            
-            },
-            phone: {
-             
-              required: true,
-              maxlength:10,
-              minlength:10
-            
-            }
+  <script>
+    $(document).ready(function () {
+      $("#registration").validate({
+        errorClass: "error",
+        // Specify validation rules
+        rules: {
+          fname: "required",
+          lname: "required",
+          username: {
+            required: true,
+            email: true
           },
+          password: {
+            required: true,
+            pwcheck: true,
+            minlength: 10
+          },
+          city: {
+            required: true,
 
-       
-            messages: {
-                            fname: {
-                                required: "Name required!",
-                                
-                            },
-                            lname: {
-                                required: "Name required!"
-                            },
-                            username: {
-                                required: "Email required!"
-                            },
-                            password: {
-                                required: "Password required!",
-                                pwcheck: "Password must have atleast one lowercase and contain a digit!",
-                                minlength: "Password is too short! "
-                            },
-                            city: {
-                              required: "City required!",
-                               
-             
-            
-            },
-            zip: {
-              required: "Zip required!",
-                              
-                                maxlength: "Zip is too long! "
-              
-            },
-            business: {
-              required: "Business size required!"
-            
-            },
-            bname: {
-              required: "Business name required!",
-                              
-            
-            },
-            phone: {
-              required: "Phone required!",
-                               
-                                maxlength: "Phone number too long! ",
-                                minlength:"Phone number too short!"
-            }
-                          
-                        },
 
-        
-        });
-        $.validator.addMethod("pwcheck", function(value) {
-   return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
-       && /[A-Z]/.test(value) // has a lowercase letter
-       && /\d/.test(value) // has a digit
-});
+          },
+          zip: {
+            pcheck: true,
+            maxlenght: 6,
+            required: true,
+
+          },
+          business: {
+            required: true,
+
+          },
+          bname: {
+            required: true,
+
+          },
+          phone: {
+
+            required: true,
+            maxlength: 10,
+            minlength: 10
+
+          }
+        },
+
+
+        messages: {
+          fname: {
+            required: "Name required!",
+
+          },
+          lname: {
+            required: "Name required!"
+          },
+          username: {
+            required: "Email required!"
+          },
+          password: {
+            required: "Password required!",
+            pwcheck: "Password must have atleast one lowercase and contain a digit!",
+            minlength: "Password is too short! "
+          },
+          city: {
+            required: "City required!",
+
+
+
+          },
+          zip: {
+            required: "Zip required!",
+
+            maxlength: "Zip is too long! "
+
+          },
+          business: {
+            required: "Business size required!"
+
+          },
+          bname: {
+            required: "Business name required!",
+
+
+          },
+          phone: {
+            required: "Phone required!",
+
+            maxlength: "Phone number too long! ",
+            minlength: "Phone number too short!"
+          }
+
+        },
 
 
       });
-      </script>
-  </body>
+      $.validator.addMethod("pwcheck", function (value) {
+        return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+          && /[A-Z]/.test(value) // has a lowercase letter
+          && /\d/.test(value) // has a digit
+      });
+
+
+    });
+  </script>
+</body>
+
 </html>

@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-mongoose.connect("mongodb://localhost:27017/usersDB", {
+mongoose.connect("mongodb+srv://admin:frames40247@cluster0.xv5zr.mongodb.net/eusersDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -83,9 +83,14 @@ passport.use(User.createStrategy());
 
 const postSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  name:{type:String,required:true},
+  name: { type: String, required: true },
   date: { type: String, required: true },
   message: { type: String, required: true },
+  time: { type: String, required: true },
+  ingred: { type: String, required: true },
+  title: { type: String, required: true },
+  type: { type: String, required: true },
+  serv: { type: String, required: true },
 });
 
 const Post = mongoose.model("Post", postSchema);
@@ -99,8 +104,6 @@ passport.deserializeUser(function (user, done) {
 
 app.get("/", function (req, res) {
   if (req.isAuthenticated()) {
-
- 
     res.render("index", {
       login: true,
 
@@ -143,7 +146,9 @@ app.get("/equipments", function (req, res) {
   }
 });
 app.get("/login", function (req, res) {
-  res.render("sign-in");
+  res.render("sign-in", {
+    inCheck: false,
+  });
 });
 
 app.post("/login", function (req, res) {
@@ -152,11 +157,38 @@ app.post("/login", function (req, res) {
     password: req.body.password,
   });
 
-  req.login(user, function (err) {
-    if (err) {
+  User.findOne({ username: req.body.username }, function (err, use) {
+    if (use) {
+      if (req.body.password) {
+        use.authenticate(req.body.password, function (
+          err,
+          model,
+          passwordError
+        ) {
+          if (passwordError) {
+            res.render("sign-in", {
+              inCheck: true,
+            });
+          } else if (model) {
+            req.login(user, function (err) {
+              if (err) {
+                console.log(err);
+              } else {
+                passport.authenticate("local")(req, res, function () {
+                  res.redirect("/");
+                });
+              }
+            });
+          }
+        });
+      } else {
+        res.render("sign-in", {
+          inCheck: true,
+        });
+      }
     } else {
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/");
+      res.render("sign-in", {
+        inCheck: true,
       });
     }
   });
@@ -183,89 +215,73 @@ app.post("/loginCheck", function (req, res) {
   });
 });
 
-
-app.get("/posts",function(req,res){
-  if(req.isAuthenticated()){
-    Post.find(function(err,result){
-      if(!err){
-        res.render("posts",{
+app.get("/posts", function (req, res) {
+  if (req.isAuthenticated()) {
+    Post.find(function (err, result) {
+      if (!err) {
+        res.render("posts", {
           posts: result,
-          login:true,
+          login: true,
           itemCount: req.session.cart ? req.session.cart.totalQ : 0,
-        })
+        });
+      } else {
+        res.render("posts", {
+          login: true,
+          posts: false,
+          itemCount: req.session.cart ? req.session.cart.totalQ : 0,
+        });
       }
-      else{
-       res.render("posts",{
-         login:true,
-         posts:false,
-         itemCount: req.session.cart ? req.session.cart.totalQ : 0,
-       })
-      }
-      
-      
-      
-    })
-
-  }
-  else{
-    Post.find(function(err,result){
-      if(!err){
-        res.render("posts",{
+    });
+  } else {
+    Post.find(function (err, result) {
+      if (!err) {
+        res.render("posts", {
           posts: result,
           itemCount: req.session.cart ? req.session.cart.totalQ : 0,
-          login:false
-        })
+          login: false,
+        });
+      } else {
+        res.render("posts", {
+          login: false,
+          itemCount: req.session.cart ? req.session.cart.totalQ : 0,
+          posts: false,
+        });
       }
-      else{
-       res.render("posts",{
-         login:false,
-         itemCount: req.session.cart ? req.session.cart.totalQ : 0,
-         posts:false
-       })
-      }
-      
-      
-      
-    })
-
+    });
   }
+});
 
-})
+app.post("/posts", function (req, res) {
+  if (req.isAuthenticated()) {
+    var currentdate = new Date();
+    var datetime =
+      currentdate.getDate() +
+      "/" +
+      (currentdate.getMonth() + 1) +
+      "/" +
+      currentdate.getFullYear();
 
-app.post("/posts",function(req,res){
-
-  if(req.isAuthenticated())
-{
-  var currentdate = new Date(); 
-var datetime = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes()+ ":" 
-                + currentdate.getSeconds();
-
-                console.log(datetime);
-  var post=new Post({
-    user: req.user._id,
-    name: req.user.firstname,
-    message: req.body.message,
-    date:datetime
-
-
-  })
-
-  post.save(function(err,result){
-    if(!err){
-      res.redirect("/posts")
-    }
-  })
-  console.log(post);
-}
-else{
-  res.redirect("/login")
-}
-
-})
+    var post = new Post({
+      user: req.user._id,
+      name: req.user.firstname,
+      message: req.body.message,
+      date: datetime,
+      time: req.body.time,
+      ingred: req.body.ingred,
+      title: req.body.title,
+      type: req.body.Type,
+      serv: req.body.serv,
+    });
+    console.log(post);
+    post.save(function (err, result) {
+      if (!err) {
+        res.redirect("/posts");
+      }
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
 
 app.post("/yourmessage", async (req, res) => {
   let transporter = nodemailer.createTransport({
@@ -300,6 +316,28 @@ app.post("/yourmessage", async (req, res) => {
   main().catch(console.error);
 });
 
+app.get("/user/posts/:id", function (req, res) {
+  console.log(req.params.id);
+  Post.remove({ _id: req.params.id }, function (err, del) {
+    if (!err) {
+      res.redirect("/user/posts");
+    }
+  });
+});
+
+app.get("/user/posts", function (req, res) {
+  console.log(req.user);
+  Post.find({ user: req.user._id }, function (err, post) {
+    if (!err) {
+      console.log(post);
+      res.render("userPosts", {
+        posts: post,
+        itemCount: req.session.cart ? req.session.cart.totalQ : 0,
+        login: true,
+      });
+    }
+  });
+});
 app.post("/newsletter", function (req, res) {
   const email = req.body.email;
 
@@ -345,7 +383,7 @@ app.post("/newsletter", function (req, res) {
         console.log(JSON.parse(data));
       });
     });
-    console.log(request);
+
     request.write(jsonData);
     request.end();
   } else {
@@ -384,14 +422,16 @@ app.post("/newsletter", function (req, res) {
         console.log(JSON.parse(data));
       });
     });
-    console.log(request);
+
     request.write(jsonData);
     request.end();
   }
 });
 
 app.get("/register", function (req, res) {
-  res.render("sign-up");
+  res.render("sign-up", {
+    isExist: false,
+  });
 });
 
 app.post("/register", function (req, res) {
@@ -406,11 +446,19 @@ app.post("/register", function (req, res) {
     business: req.body.business,
     addr: req.body.al1 + req.body.al2,
   };
-
-  User.register(new User(user), req.body.password, function (err, users) {
-    if (!err) {
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/");
+  User.findOne({ username: req.body.username }, function (err, found) {
+    if (found) {
+      console.log("user already exists");
+      res.render("sign-up", {
+        isExist: true,
+      });
+    } else {
+      User.register(new User(user), req.body.password, function (err, users) {
+        if (!err) {
+          passport.authenticate("local")(req, res, function () {
+            res.redirect("/");
+          });
+        }
       });
     }
   });
@@ -645,7 +693,6 @@ app.post("/charge", function (req, res) {
     const token = req.body.stripeToken; // Using Express
 
     amount = parseInt(cart.totalP) + 45;
-    console.log(amount);
 
     stripe.charges.create(
       {
@@ -708,7 +755,6 @@ app.get("/user/profile", function (req, res) {
 });
 
 app.get("/user/orders", function (req, res) {
-  console.log("inside get");
   if (req.isAuthenticated()) {
     Order.find({ user: req.user._id }, function (err, orders) {
       if (!err) {
