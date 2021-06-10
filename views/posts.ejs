@@ -4,16 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
-    type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-  <!-- Core theme CSS (includes Bootstrap)-->
+  <%- include("partials/links") %> 
   <link href="css/store.css" rel="stylesheet" />
   <link rel="shortcut icon" href="/images/1.svg" type="image/x-icon" />
   <title>Community</title>
@@ -26,11 +17,9 @@
   <section id="postMast" class="homeMast" style="height: 550px;">
     <header class="masthead">
       <div class="container">
-        <div class="masthead-subheading">Welcome To Our Studio!</div>
+        
         <div class="masthead-heading text-uppercase">OUR COMMUNITY</div>
 
-        <!-- <a href="#pages"><i style="margin-top: 4.5rem;" class="pos fas fa-sort-down"></i></a>
-              <a href="#pages"> <hr class="full"  style="margin-top: 15px; color: blue; font-size: 3rem;"></a> -->
 
 
       </div>
@@ -53,39 +42,15 @@
             <h5 class="card-title">Post #<%= i+1 %> </h5>
             <h5 style="text-transform: uppercase; font-size: 3rem; color: #212529;" class="card-title">
               <%=posts[i].title%></h5>
-            <div class="row" style="padding: 0 6% 0 6%;">
-              <div class="col-sm">
-                <p style="font-size: 1rem;" class="card-text"><small style="border-top: none;"><span><i
-                        style="color: #212529;" class="fas fa-clock"></i></span> : <%= posts[i].time %>
-                  </small></p>
 
-              </div>
-
-              <div class="col-sm">
-                <p style="font-size: 1rem;" class="card-text"><small style="border-top: none;"><span><i
-                        style="color: #fed136;" class="fas fa-user-friends"></i></span> :
-                    <%= posts[i].serv %> </small></p>
-              </div>
-              <% if(posts[i].type=== "Hot Coffee"){ %>
-              <div class="col-sm">
-                <p style="font-size: 1rem;" class="card-text"><small style="border-top: none;"><span><i
-                        style="color: red;" class="fas fa-fire"></i></span></small></p>
-              </div>
-              <%}else{ %>
-              <div class="col-sm">
-                <p style="font-size: 1rem;" class="card-text"><small style="border-top: none;"><span><i
-                        style="color:cadetblue;" class="fas fa-snowflake"></i></span></small></p>
-              </div>
-              <% } %>
-
-            </div>
+            
             <p class="textis card-text"> <%= posts[i].message %> </p>
             <a data-toggle="modal" data-target=#mymodal<%= posts[i]._id%> href="#">Read More...</a>
 
 
 
-            <div id=mymodal<%= posts[i]._id %> class="modal fade" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered " id=<%= posts[i]._id %>>
+            <div id=mymodal<%= posts[i]._id %>  class="modal fade" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered modal-xl"  id=<%= posts[i]._id %>>
                 <div style="border-radius: 1.4rem;" class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title"><%= posts[i].name %> </h5> <em>
@@ -93,50 +58,56 @@
                     </em>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
+
                   <div style="padding: 0;" class="modal-body">
 
                     <div class="card" style="border-radius: 0%; width: 100%;">
-                      <img
-                        src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_500740897_200013331653767347294_333325.jpg"
-                        style="border-radius: 0%;" class="recImg card-img-top" alt="...">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-8" style="padding: 0%;">
+                            <%const v= Math.floor(Math.random() * 3)  %> 
+                            <% const a=["https://images.unsplash.com/photo-1514163161321-f4f7c2a90296?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80","https://images.unsplash.com/photo-1489533119213-66a5cd877091?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80","https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80","https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"] %> 
+                            <% console.log(v) %> 
+                            <img
+                            src= <%= a[v] %> 
+                            src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_500740897_200013331653767347294_333325.jpg"
+                            style="border-radius: 0%;" class="recImg card-img-top" alt="...">
+                          </div>
+                          <div class="col" style="background-color: #F9F9F9;">
+                            <div class="container" style="margin: 50px auto 50px auto;">
+                              <p style="margin: 0%;">Blog</p>
+                              <h5 style="text-transform: uppercase; font-size: 3rem; color: #212529;" class="card-title">
+                                <%=posts[i].title%></h5>
+  
+                                <hr class="customhr">
+                                <h5 style=" font-size: 1.5rem; color: #212529;" class="card-title">
+                                  Welcome To The Community!</h5>
+
+                                  <div class="pil" style="background-color: transparent; width: 10rem; margin: auto;">
+                                    <h5 style="font-size: 0.5rem; letter-spacing: 0.7;font-family: 'Montserrat'; margin: auto;">
+                                     <%=posts[i].type %>
+                                    </h5>
+                                  </div>
+  
+                                  <div style="margin-top: 50px; margin-left: auto; margin-right: auto;">
+                                    <p class="card-text"><small class="text-muted">by <%=posts[i].name%> | <%= posts[i].date %> </small></p>
+                                  </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                     
                       <div class="card-body">
 
                         <h5 style="text-transform: uppercase; font-size: 3rem; color: #212529;" class="card-title">
                           <%=posts[i].title%></h5>
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-sm">
-                              <p style="font-size: 1.6rem;" class="card-text"><small style="border-top: none;"><span><i
-                                      style="color: #212529;" class="fas fa-clock"></i></span> : <%= posts[i].time %>
-                                </small></p>
+                          <hr style="width: 4rem;">
 
-                            </div>
+                       
+                        
+                          <p style="text-align: left; padding-left: 20%; padding-right: 20%; white-space: pre-line;" class="card-text"><%=posts[i].message%></p>
 
-                            <div class="col-sm">
-                              <p style="font-size: 1.6rem;" class="card-text"><small style="border-top: none;"><span><i
-                                      style="color: #fed136;" class="fas fa-user-friends"></i></span> :
-                                  <%= posts[i].serv %> </small></p>
-                            </div>
-                            <% if(posts[i].type=== "Hot Coffee"){ %>
-                            <div class="col-sm">
-                              <p style="font-size: 1.6rem;" class="card-text"><small style="border-top: none;"><span><i
-                                      style="color: red;" class="fas fa-fire"></i></span></small></p>
-                            </div>
-                            <%}else{ %>
-                            <div class="col-sm">
-                              <p style="font-size: 1.6rem;" class="card-text"><small style="border-top: none;"><span><i
-                                      style="color:cadetblue;" class="fas fa-snowflake"></i></span></small></p>
-                            </div>
-                            <% } %>
-
-                          </div>
-                          <hr>
-                        </div>
-
-                        <h4 style=" text-align: left;" class="card-title">Ingredients:</h4>
-                        <p style="text-align: left;" class="card-text"><%=posts[i].ingred%></p>
-                        <h4 style="text-align: left;" class="card-title">Preparation:</h4>
-                        <p style="text-align: left;" class="card-text"><%=posts[i].message%></p>
 
 
 
@@ -146,12 +117,7 @@
                     </div>
 
                   </div>
-                  <div style="padding: 0.98%;" class="modal-footer">
-                    <div style="margin-left: auto; margin-right: auto;">
-                      <p class="card-text"><small class="text-muted">Posted <%= posts[i].date %> </small></p>
-                    </div>
-
-                  </div>
+                
 
                 </div>
               </div>
@@ -168,6 +134,7 @@
   <section id="pages" style="margin-right: auto; margin-left: auto;" class="page-section">
 
     <div class="container">
+      <% if(login){ %> 
       <form action="/posts" method="POST">
         <div class="row">
 
@@ -180,25 +147,18 @@
               name="title" class="message clock " placeholder="Title *">
 
 
-            <input type="text" style="font-family: 'Montserrat';" name="time" class="message clock "
-              placeholder="Time In Minutes..       🕓">
+          
 
             <select style="width: 84%;" id="inputType" name="Type" class="form-control message clock op">
-              <option selected>Choose Type..</option>
-              <option class="oppt">Hot Coffee</option>
-              <option class="oppt">Cold Coffee</option>
+              <option selected>Choose Category</option>
+              <option class="oppt">Education</option>
+              <option class="oppt">Culture</option>
+              <option class="oppt">Coffee</option>
+              <option class="oppt">Guides</option>
             </select>
-            <select style="width: 84%;" id="inputServ" name="serv" class="form-control message clock op">
-              <option selected>Choose Serving..</option>
-              <option class="oppt">1</option>
-              <option class="oppt">4</option>
-              <option class="oppt">10</option>
-            </select>
-            <textarea style="margin-bottom: 2%; width: 84%;" rows="3" cols="50" class="form-control message" id="ingred"
-              name="ingred" placeholder="Ingredients *" required="required"
-              data-validation-required-message="Please Enter Ingredients."></textarea>
-            <textarea rows="9" cols="50" style="width: 84%;" class="form-control message" id="message" name="message"
-              placeholder="Process *" required="required"
+         
+            <textarea rows="20" cols="50"  style=" width: 84%;" class="form-control message" id="message" name="message"
+              placeholder="Your Post*" required="required"
               data-validation-required-message="Please enter a message."></textarea>
 
 
@@ -210,6 +170,14 @@
 
 
       </form>
+      <% }else{ %> 
+            
+      <div style="text-align: center;" >
+        <div class="about" style="padding: 3.5% 3% 1% 3%; text-align: center; color:#212529">LOGIN TO POST  <i class="fas fa-user-circle"></i></div>
+       
+        <a style="margin-top: 6%; font-size: 3.2rem;border-radius: 3rem; padding:1% 3%;  text-align: center;" class="btn btn-lg btn-warning" href="/login" role="button">Login</a>
+       </div>
+       <% }%> 
     </div>
   </section>
 
